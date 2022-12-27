@@ -12,7 +12,7 @@ module.exports.getPlayers = (req, res) => {
     Player.find()
         .then((players) => res.json(players))
         .catch(err => {
-            console.log(err)
+            console.log(err,'you have an error on the back-end!')
             res.status(400).json(err)
         })
 }
