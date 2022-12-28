@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useInsertionEffect } from 'react';
-import { NavLink, useNavigate  } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import axios from'axios'
 
 const PlayerList = () => {
@@ -36,7 +36,7 @@ const PlayerList = () => {
                                     <td>{player.name}</td>
                                     <td>{player.position}</td>
                                     <td>
-                                        <button className='btn btn-danger border border-dark border-2 rounded-0'>Cut from the team</button>
+                                        <button className='btn btn-danger border border-dark border-2 rounded-0 remove'>Cut from the team</button>
                                     </td>
                                 </tr>
                             ))

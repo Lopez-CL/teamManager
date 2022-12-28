@@ -1,10 +1,35 @@
 .App {
   text-align: center;
 }
-
+.remove, .status{
+  box-shadow: 1px 1px 1px black !important; 
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.active{
+  color: black;
+}
+.game{
+  font-size: 1.5rem;
+}
+
+.playing{
+  background-color: green;
+  color: white;
+  box-shadow: 1px 1px 1px black !important; 
+}
+.not-playing{
+  background-color: red;
+  color: white;
+  box-shadow: 1px 1px 1px black !important; 
+}
+.undecided{
+  background-color: yellow;
+  color: black;
+  box-shadow: 1px 1px 1px black !important; 
 }
 
 @media (prefers-reduced-motion: no-preference) {
