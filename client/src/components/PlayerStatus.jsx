@@ -25,7 +25,7 @@ const PlayerList = () => {
             newData.statusG2 = playerStatus
         }
         else{
-            newData.statusG3 =playerStatus
+            newData.statusG3 = playerStatus
         }
         axios.put(`http://localhost:8000/api/updatePlayer/${playerId}`, newData)
         .then(res =>{

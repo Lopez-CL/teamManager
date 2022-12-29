@@ -32,6 +32,13 @@
   box-shadow: 1px 1px 1px black !important; 
 }
 
+.btn-success{
+  font-weight: bold !important;
+  margin-left: 36rem !important;
+}
+label{
+  width: 250px !important;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

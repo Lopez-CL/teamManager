@@ -4,7 +4,7 @@ const PlayerSchema = mongoose.Schema({
     name: {
         type: String,
         required: [true, '*Player name is required!'],
-        min: [2, "*Player's name must be two characters long or more"]
+        minlength: [2, "*Player's name must be two characters long or more"]
     },
     position: {
         type: String,

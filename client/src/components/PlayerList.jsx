@@ -17,8 +17,8 @@ const PlayerList = () => {
     return (
         <div className='border border-1 py-2 px-3 col-7 mx-auto'>
             <div className='my-3 d-flex justify-content-start'>
-                <NavLink className='text-start me-1' to='/player/list'>List</NavLink> 
-                |<NavLink className='mx-1 text-start' to='/players/addplayer'>Add Player</NavLink>
+                <p><NavLink className='text-start' to='/player/list'>List</NavLink> | </p>
+                <p><NavLink className='mx-1 text-start' to='/players/addplayer'>Add Player</NavLink></p>
             </div>
             <div>
                 <table className='table table-striped border border-1'>
