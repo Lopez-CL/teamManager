@@ -36,7 +36,7 @@ module.exports.updatePlayer = (req, res) => {
         })
 }
 module.exports.deletePlayer = (req, res) => {
-    Player.deleteOne(req.params._id)
+    Player.deleteOne({_id: req.params._id})
         .then((erasure) => res.json(erasure))
         .catch(err => {
             console.log(err)

@@ -8,7 +8,6 @@
   height: 40vmin;
   pointer-events: none;
 }
-
 .active{
   color: black;
 }
@@ -38,6 +37,27 @@
 }
 label{
   width: 250px !important;
+}
+#react-confirm-alert{
+  z-index: 1;
+  position: relative;
+  bottom: 275px;
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: bolder;
+  text-align: center;
+  color:azure
+}
+.react-confirm-alert-body{
+  display: flex;
+  flex-direction:  column;
+  justify-content: center;
+  padding: 1rem;
+  background-color: dodgerblue;
+}
+
+.react-confirm-alert-body button{
+  margin: 5% 5%;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
