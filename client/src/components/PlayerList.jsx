@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { useInsertionEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import axios from'axios'
 import {confirmAlert} from 'react-confirm-alert'
 
-const PlayerList = () => {
+const PlayerList = ({socket}) => {
     const [players, setPlayers] = useState([]);
     useEffect(()=>{
         axios.get('http://localhost:8000/api/getPlayers')
@@ -15,6 +14,14 @@ const PlayerList = () => {
         })
         .catch((err)=>(console.log(err)))
     }, [])
+    socket.on('playerRemoved',deletedId =>{
+        let updatedRoster = players.filter((player)=> player._id !== deletedId)
+        setPlayers(updatedRoster);
+    })
+    socket.on('playerAdded',newPlayer =>{
+        let updatedRoster = [...players,newPlayer]
+        setPlayers(updatedRoster);
+    })
     const cutPlayer = (playerId,name) =>{
         confirmAlert({
             title: 'Confirm Cut',
@@ -22,15 +29,18 @@ const PlayerList = () => {
             buttons:[
                 {label: 'Cut player',
                 onClick: ()=>{
-                    axios.delete(`http://localhost:8000/api/deletePlayer/${playerId}`)
-                    .then((res)=>{
-                        console.log(res.data)
-                        let updatedRoster = players.filter((player)=> player._id !== playerId)
-                        setPlayers(updatedRoster);
-                    })
-                    .catch((err) => {
-                        console.log(err, 'There was an issue cutting player')
-                    })
+                    socket.emit('cutPlayer',playerId)
+                    let updatedRoster = players.filter((player)=> player._id !== playerId)
+                    setPlayers(updatedRoster);
+                    // axios.delete(`http://localhost:8000/api/deletePlayer/${playerId}`)
+                    // .then((res)=>{
+                    //     console.log(res.data)
+                    //     let updatedRoster = players.filter((player)=> player._id !== playerId)
+                    //     setPlayers(updatedRoster);
+                    // })
+                    // .catch((err) => {
+                    //     console.log(err, 'There was an issue cutting player')
+                    // })
                 }
             },
             {label: 'Cancel!',
