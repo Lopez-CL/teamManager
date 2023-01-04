@@ -9,25 +9,24 @@ const cookieParser = require('cookie-parser')
 
 //middleware that adds post data to body of request
 app.use(express.json(), express.urlencoded({ extended: true }))
-//middleware that adds post data to body of request
+//middleware that adds cookies to body of request
 app.use(cookieParser());
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000', credentials: true
+}))
+
 
 require('./config/mongoose.config')
 require('./routes/player.routes')(app)
 require('./routes/coach.routes')(app)
 
-// app.use(cors({
-//     origin: 'http://localhost:3000'
-// }))
+
 
 const server = app.listen(port, () => console.log(`Listening on port ${port}!`))
 const io = socket(server, {
     cors: {
         origin: '*',
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        allowedHeaders: ['*'],
-        credentials: true,
+        methods: ['GET', 'POST']
     }
 })
 io.on('connection', (socket) => {

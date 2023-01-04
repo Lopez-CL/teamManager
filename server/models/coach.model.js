@@ -26,7 +26,9 @@ const CoachSchema = mongoose.Schema({
         minlength: [8,'*Coaches username must be 8 characters or more.']
     },
 },
-{timesstamps: true})
+{timestamps: true})
+
+
 
 CoachSchema.pre('save', async function(next){
     try{
@@ -38,5 +40,17 @@ CoachSchema.pre('save', async function(next){
         console.log('Error in save', error);
     }
 })
+//virtual fields
 
+CoachSchema.virtual('confirmPassword')
+.get(() => this._confirmPassword)
+.set(value=> this._confirmPassword = value)
+
+//mongoose Middleware
+CoachSchema.pre('validate', function(next){
+    if(this.password !== this.confirmPassword){
+        this.invalidate('confirmPassword','Password must match confirmPassword')
+    }
+    next()
+})
 module.exports = mongoose.model('Coach', CoachSchema);

@@ -24,7 +24,7 @@ const AddPlayer = ({ socket }) => {
         axios.post('http://localhost:8000/api/createPlayer',{
             name,
             position
-        })
+        }, {withCredentials:true})
         .then((res)=>{
             console.log(res.data)
             navigate('/player/list')

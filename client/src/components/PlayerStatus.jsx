@@ -8,7 +8,7 @@ const PlayerList = () => {
     const navigate = useNavigate()
     const [triggerRequest, setTriggerRequest] = useState(false)
     useEffect(()=>{
-        axios.get('http://localhost:8000/api/getPlayers')
+        axios.get('http://localhost:8000/api/getPlayers',{withCredentials:true})
         .then((res) =>{
             console.log(res)
             console.log(res.data)
@@ -27,7 +27,7 @@ const PlayerList = () => {
         else{
             newData.statusG3 = playerStatus
         }
-        axios.put(`http://localhost:8000/api/updatePlayer/${playerId}`, newData)
+        axios.put(`http://localhost:8000/api/updatePlayer/${playerId}`, newData, {withCredentials:true})
         .then(res =>{
             console.log(playerStatus)
             console.log(res.data)

@@ -6,7 +6,7 @@ import {confirmAlert} from 'react-confirm-alert'
 const PlayerList = ({socket}) => {
     const [players, setPlayers] = useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:8000/api/getPlayers')
+        axios.get('http://localhost:8000/api/getPlayers', {withCredentials:true})
         .then((res) =>{
             console.log(res)
             console.log(res.data)

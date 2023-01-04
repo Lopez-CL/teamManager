@@ -35,6 +35,9 @@
   font-weight: bold !important;
   margin-left: 36rem !important;
 }
+.form-space{
+  margin-top: 5%;
+}
 label{
   width: 250px !important;
 }

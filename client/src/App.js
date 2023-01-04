@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import PlayerList from './components/PlayerList';
 import PlayerStatus from './components/PlayerStatus';
 import AddPlayer from './components/AddPlayer';
+import Main from './views/Main'
 import {io} from 'socket.io-client'
 function App() {
   //setting up connect to server with socket.io
@@ -20,6 +21,7 @@ function App() {
       <BrowserRouter>
       <NavBar/>
       <Routes>
+        <Route path='/' element={<Main/>}/> 
         <Route path='/player/list' element={<PlayerList socket={socket}/>}/> 
         <Route path='/players/addplayer' element={<AddPlayer socket={socket}/>}/>
         <Route path='/status/game/:num' element={<PlayerStatus/>}/>
