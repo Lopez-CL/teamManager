@@ -23,6 +23,8 @@ require('./routes/coach.routes')(app)
 
 
 const server = app.listen(port, () => console.log(`Listening on port ${port}!`))
+/*When not using socket.io
+app.listen(port, () => console.log(`Listening on ${port}!`))*/
 const io = socket(server, {
     cors: {
         origin: '*',
